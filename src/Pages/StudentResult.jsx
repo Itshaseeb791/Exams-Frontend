@@ -555,7 +555,7 @@ const StudentResult = () => {
     const fetchResults = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`/api/results/student/${userId}`);
+        const { data } = await axios.get(`${API_URL}/api/results/student/${userId}`);
         setResults(data.results || []);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to fetch results");
@@ -596,7 +596,7 @@ const StudentResult = () => {
     setReportError((prev) => ({ ...prev, [attemptId]: null }));
 
     try {
-      const { data } = await axios.get(`/api/exams/report/${attemptId}`);
+      const { data } = await axios.get(`${API_URL}/api/exams/report/${attemptId}`);
       const pdfUrl = generatePDF(data.data, examTitle); // returns blob URL
 
       if (newTab) {
