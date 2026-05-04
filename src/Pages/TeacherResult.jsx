@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Search } from "lucide-react";
 import axios from "axios";
 import DropDownMenu from "../components/DropDownMenu";
+import { API_URL } from "../config";
 
 // Grade calculation based on percentage
 const getGrade = (obtained, total) => {
@@ -51,7 +52,7 @@ const TeacherResult = () => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          `/api/results/teacher/${teacherId}`
+          `${API_URL}/api/results/teacher/${teacherId}`
         );
         setResults(data.results || []);
       } catch (err) {

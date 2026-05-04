@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { TrendingUp, AlertTriangle, Users } from "lucide-react";
 import axios from "axios";
 import DropDownMenu from "../components/DropDownMenu";
+import { API_URL } from "../config";
 
 const getGrade = (obtained, total) => {
   if (!total) return "N/A";
@@ -39,7 +40,7 @@ const TeacherReport = () => {
     const fetchReport = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`/api/results/teacher/${teacherId}/report`);
+        const { data } = await axios.get(`${API_URL}/api/results/teacher/${teacherId}/report`);
         setResults(data.results || []);
         setClassNames(data.classes || []);
       } catch (err) {
@@ -59,7 +60,7 @@ const TeacherReport = () => {
       try {
         setCheatingLoading(true);
         setCheatingError(null);
-        const { data } = await axios.get(`/api/exams/cheating-attempts`, {
+        const { data } = await axios.get(`${API_URL}/api/exams/cheating-attempts`, {
           params: { teacherId },
         });
         setCheatingLogs(data.data || []);
