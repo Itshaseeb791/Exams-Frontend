@@ -3,6 +3,7 @@ import { Award, Clock, CheckCircle, FileText, Loader2 } from "lucide-react";
 import axios from "axios";
 import DropDownMenu from "../components/DropDownMenu";
 import { jsPDF } from "jspdf";
+import { API_URL } from "../config";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SAFE VALUE HELPERS — handle any unexpected data shape from backend
